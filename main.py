@@ -21,6 +21,10 @@ TUTORIAL = """
              | | |_| | || (_) | |  | | (_| | |         
              |_|\__,_|\__\___/|_|  |_|\__,_|_|         
 """
+# these choice nubmers are seperate for each episode because why not
+choiceNumber1 = 1
+choiceNumber2 = 1
+choiceNumber3 = 1
 
 # functions
 def write(txt="", delay=1.5):
