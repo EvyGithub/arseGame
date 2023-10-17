@@ -189,16 +189,15 @@ def ctj():
 startMenu()
 print("\n" * 69)
 
-match episodeChoice:
-    case 1:
-        ata()
-    case 2:
-        ltf()
-    case 3:
-        dtb()
-    case 4:
-        ftv()
-    case 5:
-        ctj()
-    case _:
-        print("AYOO!??!?!??!?")
+if episodeChoice == 1:
+    ata()
+elif episodeChoice ==  2:
+    ltf()
+elif episodeChoice == 3:
+    dtb()
+elif episodeChoice == 4:
+    ftv()
+elif episodeChoice == 5:
+    ctj()
+else:
+    print("AYOO!??!?!??!?")
