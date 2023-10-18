@@ -1,4 +1,5 @@
 import time
+import sys
 
 # variables
 episodeChoice = 1 # which episode is selected, and this will be used throughout the code
@@ -21,10 +22,6 @@ TUTORIAL = """
              | | |_| | || (_) | |  | | (_| | |         
              |_|\__,_|\__\___/|_|  |_|\__,_|_|         
 """
-# these choice nubmers are seperate for each episode because why not
-choiceNumber1 = 1
-choiceNumber2 = 1
-choiceNumber3 = 1
 
 # functions
 def write(txt="", delay=1.5):
@@ -40,13 +37,43 @@ def choice(validOptions, prompt=""):
 
     return temp
 
-def fail(flavorText="You failed!"):
-    global FAIL
+def fail(flavorText="You failed!", allowRestart=True):
+    global FAIL, episodeChoice
 
     print("\n" * 69)
 
     print(FAIL)
     print(flavorText + "\n")
+
+    if allowRestart:
+        temp = choice(["quit", "retry", "main menu"], "What do you want to do?")
+        if temp == "retry":
+            if episodeChoice == 1:
+                ata()
+            elif episodeChoice == 2:
+                ltf()
+            elif episodeChoice == 3:
+                dtb()
+            elif episodeChoice == 4:
+                ftv()
+            elif episodeChoice == 5:
+                ctj()
+
+        elif temp == "main menu":
+            startMenu()
+
+        elif temp == "quit":
+            sys.exit() # my dumbass self would to raise an exception to crash it or something
+        
+    else:
+
+        temp = "sddfwebrq25b235b2345b23456b2345b23456nb234567n3567nj467eruyertnyenrtyenrty"
+
+    print("Type anything to exit.")
+    while len(temp) == "sddfwebrq25b235b2345b23456b2345b23456nb234567n3567nj467eruyertnyenrtyenrty":
+        temp = input("> ").strip().lower()
+
+    sys.exit()
 
 def tutorial():
     write(TUTORIAL, 1)
@@ -68,43 +95,6 @@ def tutorial():
         temp = choice(["done"])
     return
 
-# choose episode
-def startMenu():
-    global episodeChoice, episodes, episode
-
-    write("\n" * 69 + "Welcome!", 1)
-
-    episodeChoice = 1
-    temp = "WOLOLOLO"
-    while temp.lower() != "start":
-        while temp.lower() not in [">", "<", "start", "tutorial"]:
-            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', or 'tutorial' (next & previous episode, respectively))\nSelected episode: [{episode}]\n")
-            temp = input("> ").strip()
-
-        if temp.lower() == "start":
-            break
-        
-        elif temp.lower() == ">":
-            episodeChoice += 1
-
-        elif temp.lower() == "<":
-            episodeChoice -= 1
-
-        elif temp.lower() == "tutorial":
-            tutorial()
-
-        if episodeChoice < 1:
-            episodeChoice = 5
-        
-        if episodeChoice > 5:
-            episodeChoice = 1
-
-        episode = episodes[episodeChoice - 1]
-
-        temp = "23470985h036nb234n5n302457n7g32670v8gn237g34687g04563mn34657gvn3456780345678b90n3456" # kek
-
-    return None
-
 # episode 1: Attempting the Arrest
 def ata():
     write("F: Oh no! Eli is robbing the Wankopolis bank!")
@@ -119,12 +109,12 @@ def ata():
         write("Eli (thinking): That was so easy.")
         write("F (thinking): Why did I do nothing. We just lost like $200k.")
         write("F: *Takes out phone*", 1)
-        write("F: Uh, yeah, Eli just stole $200k from the local bank")
+        write("F (in guilt): Uh, yeah, Eli just stole $200k from the local bank...")
         write("Cheif of the Wankopolis Police Force: WHAT!? HOW DID YOU LET HIM DO THAT!?!? YOU'RE FIRED!!!")
 
-        write("F is now fired from the Wankopolis Police Force.", 3)
+        write("F is now fired from the Wankopolis Police Force.", 2)
 
-        fail("Why did you choose to do nothing? Do you even want to play the game? Now you're fired from the police force. You know what? I'm not even gonna allow you to retry.")
+        fail("Why did you choose to do nothing? Do you even want to play the game? Now you're fired from the police force. You know what? I'm not even gonna allow you to retry.", False)
 
     elif temp == "get backup":
         print("\n" * 69)
@@ -163,11 +153,19 @@ def ata():
         elif temp == "car":
             print("\n" * 69)
 
-            write("The car pulls up, and you both get in, with RW driving.")
+            write("The car pulls up, and the duo both get in, with RW driving.")
             write("It takes F so long and he is having trouble with the seatbelt.")
-            write("You end up losing track of Eli's car because you couldn't see and RW thought you were watching.", 3)
+            write("F ended up losing track of Eli's car because he couldn't see and RW thought F was watching.", 3)
 
             fail("Ok, this one isn't really your fault, this is more of RW's fault. He should've been looking. Either way, Eli is now gone and you can't find him.")
+
+        elif temp == "grenade":
+            print("\n" * 69)
+
+            write("RW gives F the grenade while Eli is desperatly trying to get into the car and escape.", 2)
+            write("F throw the grenade at Eli's car.")
+            write("Eli's car explodes into flames.", 1.5)
+            write("F and ")
 
 
 def ltf():
@@ -186,18 +184,57 @@ def ctj():
     pass
 
 
-startMenu()
-print("\n" * 69)
+# choose episode
+def startMenu():
+    global episodeChoice, episodes, episode
 
-if episodeChoice == 1:
-    ata()
-elif episodeChoice ==  2:
-    ltf()
-elif episodeChoice == 3:
-    dtb()
-elif episodeChoice == 4:
-    ftv()
-elif episodeChoice == 5:
-    ctj()
-else:
-    print("AYOO!??!?!??!?")
+    episodeChoice = 1
+    temp = "WOLOLOLO"
+    while temp.lower() != "start":
+        while temp.lower() not in [">", "<", "start", "tutorial"]:
+            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', or 'tutorial' (next & previous episode, respectively))\nSelected episode: [{episode}]\n")
+            temp = input("> ").strip()
+
+        if temp.lower() == "start":
+            break
+        
+        elif temp.lower() == ">":
+            episodeChoice += 1
+
+        elif temp.lower() == "<":
+            episodeChoice -= 1
+
+        elif temp.lower() == "tutorial":
+            tutorial()
+
+        if episodeChoice < 1:
+            episodeChoice = 5
+        
+        if episodeChoice > 5:
+            episodeChoice = 1
+
+        episode = episodes[episodeChoice - 1]
+
+    if episodeChoice == 1:
+        ata()
+
+    elif episodeChoice == 2:
+        ltf()
+
+    elif episodeChoice == 3:
+        dtb()
+
+    elif episodeChoice == 4:
+        ftv()
+
+    elif episodeChoice == 5:
+        ctj()
+
+        temp = "23470985h036nb234n5n302457n7g32670v8gn237g34687g04563mn34657gvn3456780345678b90n3456" # kek
+
+    return None
+
+
+# Ok real code
+startMenu() # WHOA WHOA WHOA WHOA WHOA WHOA WHOA
+print("\n" * 69)
