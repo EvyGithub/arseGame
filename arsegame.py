@@ -41,6 +41,7 @@ def fail(flavorText="You failed!", allowRestart=True):
     global FAIL, episodeChoice
 
     print("\n" * 69)
+    print(FAIL)
 
     temp = choice(["ragequit", "retry", "main menu"], "What do you want to do? (retry; main menu; ragequit)")
     if temp == "retry":
@@ -223,9 +224,67 @@ def ata():
 
 
 def ltf():
-    pass
+    print("\n" * 69)
+    
+    write("The Failure Force (F and RW) are outside of their house, eating sandwhiches and sitting outside their house. Next to their house, there is a sign that says \"Welcome to the Middle of Nowhere!\"", 2)
+    write("F (to RW): We to to find the Fortress of Arses if we want to have a singular chance at serving justice.", 2)
+    write("The two go inside their house.", 2)
+    write("RW: Hey, wait! I know a map that leads to the fortress!")
+    write("RW: It's located inside a vault guarded by the Arses!")
+    write("F: Alright then, let's break in!")
+    write("F and RW both get into the car and drive off toward the vault in the jungle.", 2)
+    
+    write("\n...\n", 2)
+    
+    write("F and RW approach the vault and they see that JB and JI are guarding the entrance.", 2)
+    write("RW: Yo, how do we get in?")
+    
+    temp = choice(["bust in", "sneak in"], "\nWhat's your method of getting in? (bust in; sneak in)")
+    
+    if temp == "sneak in": # Path 2A
+        print("\n" * 69)
+        
+        write("F and RW decide to sneak in together.")
+        write("RW equips a radar that will make beeping sounds if a guard gets suspicious.")
+        write("F (whispering to RW): Ok, which way should we go?")
+        
+        temp = choice(["around the back", "tunnel under", "walk straight through"], "\nHow would you like to sneak in? (around the back; tunnel under; walk straight through)")
+        
+        if temp == "around the back": # Path 2AA
+            write("\n" * 69)
+            
+            write("The duo walk around to the back without any of the guards seeing them.", 2)
+            write("F: Shoot, how do we get in?")
+            
+            temp = choice(["knife", "mega drill", "open the door"], "What do you want to do? (knife; mega drill; open the door)")
+            
+            if temp == "knife":
+                write("\n" * 69)
+                
+            elif temp == "mega drill":
+                write("\n" * 69)
+                
+            elif temp == "open the door":
+                write("\n" * 69)
+        
+        elif temp == "tunnel under": # Path 2AB
+            write("\n" * 69)
+        
+        elif temp == "walk straight through": # Fail
+            write("\n" * 69)
+        
+            write("F walks right through the door,", 1)
+            write("the guards see him,", 1)
+            write("RW thinks F is an idiot", 1)
+            write("and F gets shot.", 3)
+            
+            fail("You really shouldn't have picked this option. Did you really expect it to work?")
+    
+    elif temp == "bust in": # Path 2B
+        write("\n" * 69)
+        # insert more
 
-
+    
 def dtb():
     pass
 
@@ -246,7 +305,7 @@ def startMenu():
     temp = "WOLOLOLO"
     while temp.lower() != "start":
         while temp.lower() not in [">", "<", "start", "tutorial"]:
-            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', or 'tutorial' (next & previous episode, respectively))\nSelected episode: [{episode}]\n")
+            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', or 'tutorial' (next & previous episode, respectively))\n\n= Selected episode: [{episode}] =\n")
             temp = input("> ").strip()
             
         print(temp)
