@@ -3,7 +3,7 @@ import sys
 
 # variables
 episodeChoice = 1 # which episode is selected, and this will be used throughout the code
-episodes = ["Episode 1: Attempting the Arrest", "Episode 2: Locating the Fortress", "Episode 3: Defending the Base", "Episode 4: Fleeing the Vault", "Episode 5: Completing the Job"] # just for episode names
+episodes = ["Season 1, Episode 1: Attempting the Arrest", "Season 1, Episode 2: Locating the Fortress", "Season 1, Episode 3: Defending the Base", "Season 1, Episode 4: Fleeing the Vault", "Season 1, Episode 5: Completing the Job", "Season 2, idk"] # just for episode names
 episode = episodes[0] # cosmetic purposes only
 FAIL = """
  ______      _____ _      _ 
@@ -271,11 +271,11 @@ def ltf():
             write("\n" * 69)
         
         elif temp == "walk straight through": # Fail
-            write("\n" * 69)
+            print("\n" * 69)
         
             write("F walks right through the door,", 1)
             write("the guards see him,", 1)
-            write("RW thinks F is an idiot", 1)
+            write("RW thinks F is an idiot,", 1)
             write("and F gets shot.", 3)
             
             fail("You really shouldn't have picked this option. Did you really expect it to work?")
@@ -305,7 +305,7 @@ def startMenu():
     temp = "WOLOLOLO"
     while temp.lower() != "start":
         while temp.lower() not in [">", "<", "start", "tutorial"]:
-            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', or 'tutorial' (next & previous episode, respectively))\n\n= Selected episode: [{episode}] =\n")
+            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', or 'tutorial' (next & previous episode, respectively))\n\nSelected episode: [{episode}]\n")
             temp = input("> ").strip()
             
         print(temp)
