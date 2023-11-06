@@ -3,7 +3,7 @@ import sys
 
 # variables
 episodeChoice = 1 # which episode is selected, and this will be used throughout the code
-episodes = ["Season 1, Episode 1: Attempting the Arrest", "Season 1, Episode 2: Locating the Fortress", "Season 1, Episode 3: Defending the Base", "Season 1, Episode 4: Fleeing the Vault", "Season 1, Episode 5: Completing the Job", "Season 2, idk"] # just for episode names
+episodes = ["Season 1, Episode 1: Attempting the Arrest", "Season 1, Episode 2: Locating the Fortress", "Season 1, Episode 3: Defending the Base", "Season 1, Episode 4: Fleeing the Vault", "Season 1, Episode 5: Completing the Job", "Season 2, Episode 1: idk"] # just for episode names
 episode = episodes[0] # cosmetic purposes only
 FAIL = """
  ______      _____ _      _ 
