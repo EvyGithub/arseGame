@@ -5,6 +5,7 @@ import sys
 episodeChoice = 1 # which episode is selected, and this will be used throughout the code
 episodes = ["Season 1, Episode 1: Attempting the Arrest", "Season 1, Episode 2: Locating the Fortress", "Season 1, Episode 3: Defending the Base", "Season 1, Episode 4: Fleeing the Vault", "Season 1, Episode 5: Completing the Job", "Season 2, Episode 1: idk"] # just for episode names
 episode = episodes[0] # cosmetic purposes only
+retrySkip = False
 FAIL = """
  ______      _____ _      _ 
 |  ____/\   |_   _| |    | |
@@ -42,9 +43,11 @@ def fail(flavorText="You failed!", allowRestart=True):
 
     print("\n" * 69)
     print(FAIL)
+    print(flavorText, end="\n\n")
 
     temp = choice(["ragequit", "retry", "main menu"], "What do you want to do? (retry; main menu; ragequit)")
     if temp == "retry":
+        retrySkip = True
         if episodeChoice == 1:
             ata()
         elif episodeChoice == 2:
@@ -67,6 +70,7 @@ def fail(flavorText="You failed!", allowRestart=True):
         temp = "3b6n3698nboin4ybon8b"
         
 def win():
+    retrySkip = False
     temp = choice(["quit", "restart episode", "main menu"], "")
     if temp == "restart episode":
         if episodeChoice == 1:
@@ -95,7 +99,10 @@ def win():
         temp = input("> ").strip().lower()
 
     sys.exit()
-
+    
+def typeTimer(time=1.5):
+    return
+    
 def tutorial():
     write(TUTORIAL, 1)
     write("Chief: Welcome to the Wankopolis police force!", 1.5)
@@ -226,13 +233,13 @@ def ata():
 def ltf():
     print("\n" * 69)
     
-    write("The Failure Force (F and RW) are outside of their house, eating sandwhiches and sitting outside their house. Next to their house, there is a sign that says \"Welcome to the Middle of Nowhere!\"", 2)
-    write("F (to RW): We to to find the Fortress of Arses if we want to have a singular chance at serving justice.", 2)
-    write("The two go inside their house.", 2)
+    write("The Failure Force (F and RW) are outside of their house, eating sandwhiches and sitting outside their house. Next to their house, there is a sign that says \"Welcome to the Middle of Nowhere!\"")
+    write("F (to RW): We to to find the Fortress of Arses if we want to have a singular chance at serving justice.")
+    write("The two go inside their house.")
     write("RW: Hey, wait! I know a map that leads to the fortress!")
     write("RW: It's located inside a vault guarded by the Arses!")
     write("F: Alright then, let's break in!")
-    write("F and RW both get into the car and drive off toward the vault in the jungle.", 2)
+    write("F and RW both get into the car and drive off toward the vault in the jungle.")
     
     write("\n...\n", 2)
     
@@ -251,24 +258,89 @@ def ltf():
         temp = choice(["around the back", "tunnel under", "walk straight through"], "\nHow would you like to sneak in? (around the back; tunnel under; walk straight through)")
         
         if temp == "around the back": # Path 2AA
-            write("\n" * 69)
+            print("\n" * 69)
             
             write("The duo walk around to the back without any of the guards seeing them.", 2)
             write("F: Shoot, how do we get in?")
             
             temp = choice(["knife", "mega drill", "open the door"], "What do you want to do? (knife; mega drill; open the door)")
             
-            if temp == "knife":
-                write("\n" * 69)
+            if temp == "knife": # Fail
+                print("\n" * 69)
+                
+                write("F equis a knife to try and dig through the door.")
+                write("F: Ugh, *intense effort noises and grunts*")
+                write("F: Finally! Got it!--", 0.5)
+                write("F: OWWWWWWWWW", 2)
+                write("RW: Did you really just stab yourself?", 2)
+                
+                fail("Probably should've thought that through.")
                 
             elif temp == "mega drill":
-                write("\n" * 69)
+                print("\n" * 69)
+                
+                write("F: Alright, here's a mega drill that I have.")
+                write("F: I just have to hold on to it...", 2)
+                write("\n...\n")
+                write("F: WAHHHH!!", 2)
+                write("RW (thinking): Damn.", 2)
+                
+                fail("Refrence?")
                 
             elif temp == "open the door":
-                write("\n" * 69)
+                print("\n" * 69)
+                
+                write("F opens the door and the duo go in.")
+                write("F: Alright, let's get to the vault room.")
+                write("F: That's where the map is, right?")
+                write("RW: Mhm.", 0.75)
+                write("F (whispering): We have to get past the main hub.", 2)
+                write("F (whispering): Right... Angel and Ekin are there.", 2)
+                write("F: How should I defeat them?")
+                
+                temp = choice(["grenade throw", "super bomb", "laser blaster"], "What do you want to use to defeat the guards? (grenade throw; super bomb; laser blaster)")
+                
+                if temp == "grenade throw": # fail
+                    print("\n * 69")
+                    
+                    write("F throws a grenade into the main hub.")
+                    write("However, it bounces against the wall back to where he is.", 2.5)
+                    
+                    fail("...")
+                    
+                elif temp == "super bomb": # fail
+                    print("\n * 69")
+                    
+                    write("F throws a super bomb into the main hub.")
+                    write("F: Alright, it should explode in 3 seconds...", 3)
+                    write("BOOM!")
+                    write("The bomb was way to super and blew up F and RW in the process.", 2)
+                    
+                    fail("Really should've nerfed the bomb.")
+                
+                elif temp == "laser blaster":
+                    print("\n" * 69)
+                    
+                    write("F equips a laser gun and quickly blastes the two guards.", 2)
+                    write("They go to the map room straight afterwards.", 2)
+                    write("F: Alright! I got the map!")
+                    write("However, their excitment was short-lived.", 0.5)
+                    write("Oscar (holding taser): STOP RIGHT THERE!", 0.5)
+                    write("F manages to kick Oscar before he tases him.")
+                    
+                    write("RW: Nice! Now how do we get out?")
+                    
+                    temp = choice(["cheese", "rocket"], "How should F and RW get out? (rocket; cheese)")
+                    
+                    if temp == "cheese": # Fail
+                        print("\n" * 69)
+                        
+                        write("F and RW eat cheese.", 3)
+                        
+                        fail("Really? I'm literally confused on why you chose this. Were you expecting this to actually do something?")
         
         elif temp == "tunnel under": # Path 2AB
-            write("\n" * 69)
+            print("\n" * 69)
         
         elif temp == "walk straight through": # Fail
             print("\n" * 69)
@@ -281,7 +353,7 @@ def ltf():
             fail("You really shouldn't have picked this option. Did you really expect it to work?")
     
     elif temp == "bust in": # Path 2B
-        write("\n" * 69)
+        print("\n" * 69)
         # insert more
 
     
