@@ -1,5 +1,5 @@
 # A Python TBG
-The Arse Game, in python
+The Arse Game, in Python.
 
 # The Arse Game
 What is The Arse Game? The Arse Game is a game centerd around retarded people at my old school and a bunch of made up characters. Some of them include the following. <details><summary>CHARACTER SPOILERS!!</summary>SM, F, RW, and CD.</details>
