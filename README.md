@@ -22,4 +22,4 @@ In every choice option, whether it's the menu, or an option in-game, you will se
 2. If you're using IDLE, open (`CTRL + O`) the file, and press `F5` or `Modules` > `Run`
 3. Or you can use the command prompt way (`cd [file location]`, `python [file name]`)
 
-:D
+**:D**
