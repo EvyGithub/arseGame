@@ -48,6 +48,8 @@ def choice(validOptions, prompt=""):
     while temp not in validOptions:
         temp = input("> ").strip().lower()
 
+    print("\n" * 69)
+
     return temp
 
 def fail(flavorText="You failed!", allowRestart=True):
@@ -120,7 +122,8 @@ def win():
     sys.exit()
     
 def tutorial():
-    write(TUTORIAL, 1)
+    print("\n" * 69 + TUTORIAL)
+    time.sleep(2)
     write("Chief: Welcome to the Wankopolis police force!", 1.5)
     write("Chief: Everyone! Welcome our new recruit, F!", 1.5)
     write("(You are playing as F.)", 1.5)
@@ -148,8 +151,6 @@ def ata():
     temp = choice(["get backup", "nothing"], "\n(get backup; nothing)")
 
     if temp == "nothing":
-        print("\n" * 69)
-
         write("Eli: Mmm, wow, that sweet sweet muney.")
         write("Eli (thinking): That was so easy.")
         write("F (thinking): Why did I do nothing. We just lost like $200k.")
@@ -162,8 +163,6 @@ def ata():
         fail("Why did you choose to do nothing? Do you even want to play the game? Now you're fired from the police force! You know what? I'm not even gonna allow you to retry.", False)
 
     elif temp == "get backup":
-        print("\n" * 69)
-
         write("F: *Pulls out phone*")
         write("F: Hey chief, we need some backup here.")
         write("Chief: Ok, I'll reconnect you to RW. Remember, he's your partner!")
@@ -187,8 +186,6 @@ def ata():
         temp = choice(["nail", "grenade", "car"], "\n(nail; grenade; car)")
 
         if temp == "nail":
-            print("\n" * 69)
-
             write("F tries to throw the one nail at Eli's car's tire, hoping the nail would puncture the tire.")
             write("But, F ends up missing.")
             write("Since he missed, he gets away.")
@@ -196,8 +193,6 @@ def ata():
             fail("So, you had one nail. Correct? Its purpose was to hit the tire and puncture it. Am I right? And you missed it. That's kinda sad.")
 
         elif temp == "car":
-            print("\n" * 69)
-
             write("The car pulls up, and the duo both get in, with RW driving.")
             write("It takes F so long and he is having trouble with the seatbelt.")
             write("F ended up losing track of Eli's car because he couldn't see and RW thought F was watching.", 3)
@@ -205,8 +200,6 @@ def ata():
             fail("Ok, this one isn't really your fault, this is more of RW's fault. He should've been looking. Either way, Eli is now gone and you can't find him.")
 
         elif temp == "grenade":
-            print("\n" * 69)
-
             write("RW gives F the grenade while Eli is desperatly trying to get into the car and escape.", 2)
             write("F throw the grenade at Eli's car.")
             write("Eli's car explodes into flames.")
@@ -247,8 +240,6 @@ def ata():
 
 
 def ltf():
-    print("\n" * 69)
-    
     write("The Failure Force (F and RW) are outside of their house, eating sandwhiches and sitting outside their house. Next to their house, there is a sign that says \"Welcome to the Middle of Nowhere!\"")
     write("F (to RW): We to to find the Fortress of Arses if we want to have a singular chance at serving justice.")
     write("The two go inside their house.")
@@ -265,8 +256,6 @@ def ltf():
     temp = choice(["bust in", "sneak in"], "\nWhat's your method of getting in? (bust in; sneak in)")
     
     if temp == "sneak in": # Path 2A
-        print("\n" * 69)
-        
         write("F and RW decide to sneak in together.")
         write("RW equips a radar that will make beeping sounds if a guard gets suspicious.")
         write("F (whispering to RW): Ok, which way should we go?")
@@ -274,16 +263,12 @@ def ltf():
         temp = choice(["around the back", "tunnel under", "walk straight through"], "\nHow would you like to sneak in? (around the back; tunnel under; walk straight through)")
         
         if temp == "around the back": # Path 2AA
-            print("\n" * 69)
-            
             write("The duo walk around to the back without any of the guards seeing them.", 2)
             write("F: Shoot, how do we get in?")
             
             temp = choice(["knife", "mega drill", "open the door"], "What do you want to do? (knife; mega drill; open the door)")
             
             if temp == "knife": # Fail
-                print("\n" * 69)
-                
                 write("F equis a knife to try and dig through the door.")
                 write("F: Ugh, *intense effort noises and grunts*")
                 write("F: Finally! Got it!--", 0.5)
@@ -293,8 +278,6 @@ def ltf():
                 fail("Probably should've thought that through.")
                 
             elif temp == "mega drill":
-                print("\n" * 69)
-                
                 write("F: Alright, here's a mega drill that I have.")
                 write("F: I just have to hold on to it...", 2)
                 write("\n...\n")
@@ -304,29 +287,23 @@ def ltf():
                 fail("Refrence?")
                 
             elif temp == "open the door":
-                print("\n" * 69)
-                
                 write("F opens the door and they both go in.")
                 write("F: Alright, let's get to the vault room.")
                 write("F: That's where the map is, right?")
                 write("RW: Mhm.", 0.75)
                 write("F (whispering): We have to get past the main hub.", 2)
                 write("F (whispering): Right... CA and EI are there.", 2)
-                write("F: How should I defeat them?\n")
+                write("F: How should I defeat them?")
                 
                 temp = choice(["grenade throw", "super bomb", "laser blaster"], "What do you want to use to defeat the guards? (grenade throw; super bomb; laser blaster)")
                 
                 if temp == "grenade throw": # fail
-                    print("\n * 69")
-                    
                     write("F throws a grenade into the main hub.")
                     write("However, it bounces against the wall back to where he is.", 2.5)
                     
                     fail("...")
                     
                 elif temp == "super bomb": # fail
-                    print("\n * 69")
-                    
                     write("F throws a super bomb into the main hub.")
                     write("F: Alright, it should explode in 3 seconds...", 3)
                     write("BOOM!")
@@ -335,8 +312,6 @@ def ltf():
                     fail("Really should've nerfed the bomb.")
                 
                 elif temp == "laser blaster":
-                    print("\n" * 69)
-                    
                     write("F equips a laser gun and quickly blastes the two guards.", 2)
                     write("They go to the map room straight afterwards.", 2)
                     write("F: Alright! I got the map!")
@@ -349,15 +324,11 @@ def ltf():
                     temp = choice(["cheese", "rocket"], "How should F and RW get out? (rocket; cheese)")
                     
                     if temp == "cheese": # Fail
-                        print("\n" * 69)
-                        
                         write("F and RW eat cheese.", 3)
                         
                         fail("Really? I'm literally confused on why you chose this. Were you expecting this to actually do something?")
 
                     elif temp == "rocket":
-                        print("\n" * 69)
-
                         write("RW blasts the wall out and they escape.", 2)
 
                         write("\nRANK ACHIEVED: Beginner Gadget Abuser", 2)
@@ -366,8 +337,6 @@ def ltf():
                         win() # beginner gadget abuser
         
         elif temp == "tunnel under": # Path 2AB
-            print("\n" * 69)
-
             write("RW: Here's this drill you can use to go under.")
             write("F: Alright, thanks, now time to power this up!")
 
@@ -381,16 +350,12 @@ def ltf():
             temp = choice(["taser", "sniper"], "What should RW equip? (taser; sniper)")
 
             if temp == "sniper": # fail
-                print("\n" * 69)
-
                 write("RW pulls out his sniper rifle.")
                 write("He shoots JB, but then JI shoots F when that happens.", 2.5)
 
                 fail("This one's kinda fair, and at the same time not.")
 
             if temp == "taser":
-                print("\n" * 69)
-
                 write("RW uses his taser and shoots JB with it.")
                 write("Somehow, JI also gets shocked in the crossfire and they both lie unconscious.", 2)
 
@@ -401,22 +366,16 @@ def ltf():
                 temp = choice(["spear", "karate", "pause button"], "What should F use? (spear; karate; pause button)")
 
                 if temp == "spear": # fail
-                    print("\n" * 69)
-
                     write("F spears OW but then EI shoots him.", 2)
 
                     fail("Should've thought of that.")
 
                 elif temp == "karate": # fail
-                    print("\n" * 69)
-
                     write('F yells out "HIYAAH!" but then immediatly gets shot.', 2)
 
                     fail("I don't think you really had to do that. I meant the \"HIYAAH!\" part.") # Im a doulbe quote user, don't mind my inconsistency
 
                 elif temp == "pause button":
-                    print("\n" * 69)
-
                     write("F takes out the pause button and presses it.")
                     write("Time gets paused for 1 minute for everyone, except F and RW.")
                     write("F takes out the belt and attaches it to a lowering device.")
@@ -432,8 +391,6 @@ def ltf():
 
 
         elif temp == "walk straight through": # Fail
-            print("\n" * 69)
-        
             write("F walks right through the door,", 1)
             write("the guards see him,", 1)
             write("RW thinks F is an idiot,", 1)
@@ -442,8 +399,6 @@ def ltf():
             fail("You really shouldn't have picked this option. Did you really expect it to work?")
     
     elif temp == "bust in": # Path 2B
-        print("\n" * 69)
-        
         write("RW: So, here's a scooter that I modified in my mom's garage when I was 7.")
         write("F: And why are you giving that to me?")
         write("RW: Oh, I made it to be super.")
@@ -459,16 +414,12 @@ def ltf():
         temp = choice(["shield", "laser"], "What should F use? He has a super shield and a super laser. (shield; laser)")
         
         if temp == "laser": # fail
-            print("\n" * 69)
-
             write("F shoots CA with the laser.")
             write("But, EI is still alive and shoots F.", 2)
 
             fail("Always plan ahead.")
 
         elif temp == "shield":
-            print("\n" * 69)
-
             write("F holds up his shield.", 1)
             write("CA and EI both try to shoot him.", 1)
             write("Lucky for F, both bullets bounce back, killing both guards.", 2)
@@ -481,8 +432,6 @@ def ltf():
             temp = choice(["self destruct", "eject chair", "open all doors"], "Which button should F press? (self destruct; eject chair; open all doors)")
 
             if temp == "self destruct": # fail
-                print("\n" * 69)
-                
                 write("F presses the self destruct button.")
                 write("It explodes the whole vault,", 1)
                 write("including F and RW.", 2)
@@ -490,16 +439,12 @@ def ltf():
                 fail("That was way too powerful.")
 
             elif temp == "eject chair": # fail
-                print("\n" * 69)
-                
                 write("F presses the eject chair button.")
                 write("The chair ejects him and he smashes into the ceiling.", 2)
 
                 fail("Did you really think this would make F a large boulder so he can fly right through the ceiling?")
             
             elif temp == "open all doors":
-                print("\n" * 69)
-                
                 write("F presses the open all doors button.")
 
                 write("It opens all the doors in the vault.")
@@ -515,15 +460,11 @@ def ltf():
                 temp = choice(["gun left", "gun right"], "How should F get rid of OW? (gun left; gun right)")
 
                 if temp == "gun left": # fail
-                    print("\n" * 69)
-
                     write("F shoots the wall and then OW shoots him.", 2)
 
                     fail("Yeah, I thought so too. This definetly wasn't fair.")
 
                 elif temp == "gun right":
-                    print("\n" * 69)
-                    
                     write("F shoots OW.", 2)
 
                     write("F gets back onto his scooter, and then zooms through the back door.")
@@ -534,8 +475,6 @@ def ltf():
                     temp = choice(["trick", "missile", "fight"], "What do you do? (trick; missile; fight)")
 
                     if temp == "missile": # fail
-                        print("\n" * 69)
-
                         write("F (over the radio): RW, can you send a missile to JB's car? Thanks in advance. *chuckles*")
                         write("RW: Alright.")
                         write("He sends a missile, but it takes too long for it to get there and F gets shot before it lands.", 2)
@@ -543,15 +482,11 @@ def ltf():
                         fail("Pretty unlucky, am I right? I don't know.")
 
                     elif temp == "fight": # fail
-                        print("\n" * 69)
-
                         write("F stops the scooter to fistfight JB and JI but then he gets run over.", 2)
 
                         fail("That's really stupid if you tell me.")
 
                     elif temp == "trick":
-                        print("\n" * 69)
-
                         write("F rides his scooter into the tree forest nearby and JB follows.")
                         write("For that exact reason, JB crashes her car.")
 
@@ -587,7 +522,10 @@ def startMenu():
     while temp.lower() != "start":
         while temp.lower() not in [">", "<", "start", "tutorial", "quit"]:
             print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', 'tutorial', or 'quit' (next & previous episode, respectively))\n\nSelected episode: [{episode}]\n")
-            temp = input("> ").strip()
+            try:
+                temp = input("> ").strip()
+            except EOFError:
+                continue
 
         if temp.lower() == "start":
             break
