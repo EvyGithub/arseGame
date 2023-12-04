@@ -1,17 +1,22 @@
 import time
 import sys
+from datetime import datetime
+import random
+from colorama import Fore, Style
+
+print(Style.RESET_ALL, end="")
 
 # variables
 episodeChoice = 1 # which episode is selected, and this will be used throughout the code
-episodes = ["Season 1, Episode 1: Attempting the Arrest", "Season 1, Episode 2: Locating the Fortress", "Season 1, Episode 3: Defending the Base", "Season 1, Episode 4: Fleeing the Vault", "Season 1, Episode 5: Completing the Job", "Season 2, Episode 1: idk"] # just for episode names
-episode = episodes[0] # cosmetic purposes only
-FAIL = """
+episodes = [f"Season 1, Episode 1: {Fore.MAGENTA}Attempting the Arrest{Style.RESET_ALL}", f"Season 1, Episode 2: {Fore.MAGENTA}Locating the Fortress{Style.RESET_ALL}", f"Season 1, Episode 3: {Fore.MAGENTA}Defending the Base{Style.RESET_ALL}", f"Season 1, Episode 4: {Fore.MAGENTA}Fleeing the Vault{Style.RESET_ALL}", f"Season 1, Episode 5: Completing the Job", "Season 2, Episode 1: idk"] # just for episode names
+episode = episodes[0] # cosmetic pur6poses only
+FAIL = f"""{Fore.RED}
  ______      _____ _      _ 
 |  ____/\   |_   _| |    | |
 | |__ /  \    | | | |    | |
 |  __/ /\ \   | | | |    | |
 | | / ____ \ _| |_| |____|_|
-|_|/_/    \_\_____|______(_)
+|_|/_/    \_\_____|______(_){Style.RESET_ALL}
 """
 
 TUTORIAL = """
@@ -23,9 +28,18 @@ TUTORIAL = """
              |_|\__,_|\__\___/|_|  |_|\__,_|_|         
 """
 
+RANK = """
+           _____             _                 
+          |  __ \           | |     _          
+  ______  | |__) |__ _ _ __ | | __ (_)  ______ 
+ |______| |  _  // _` | '_ \| |/ /     |______|
+          | | \ \ (_| | | | |   <   _          
+          |_|  \_\__,_|_| |_|_|\_\ (_)         
+"""
+
 # functions
-def write(text="Hi", hold=1, interval=1/64):
-    print("\n" * 38)
+def write(text="Huh?", hold=1, interval=1/64):
+    print("\n" * 69)
 
     for letter in text:
         print(letter, end="", flush=True)
@@ -34,7 +48,7 @@ def write(text="Hi", hold=1, interval=1/64):
     print(" ", end="", flush=True)
 
     time.sleep(hold)
-    print("\n" * 38)
+    print("\n" * 69)
 
     return
 
@@ -43,10 +57,13 @@ def dotdotdot(hold=2):
     time.sleep(hold)
 
 def choice(validOptions, prompt=""):
-    temp = "2389054g72398b523975bn0932b509650892305b2345b"
+    temp = "2389054g72398b523975bn0932b509650892305b2345b" # lol idk I like to have fun with placeholder variables
     print(prompt)
     while temp not in validOptions:
-        temp = input("> ").strip().lower()
+        try:
+            temp = input("> ").strip().lower()
+        except EOFError:
+            continue
 
     print("\n" * 69)
 
@@ -90,8 +107,18 @@ def fail(flavorText="You failed!", allowRestart=True):
 
         temp = "3b6n3698nboin4ybon8b"
         
-def win():
-    temp = choice(["quit", "restart episode", "main menu"], "")
+
+def win(rank="What? Idk what the rank is."):
+    global RANK
+
+    print(RANK)
+    time.sleep(1)
+    print(rank)
+    time.sleep(2)
+
+    print() # just one blank line
+
+    temp = choice(["quit", "restart", "main menu"], "What do you want to do? (restart; main menu; quit)")
     if temp == "restart episode":
         if episodeChoice == 1:
             ata()
@@ -110,16 +137,7 @@ def win():
     elif temp == "quit":
         print("\n" * 69)
         sys.exit()
-        
-    else:
 
-        temp = "sddfwebrq25b235b2345b23456b2345b23456nb234567n3567nj467eruyertnyenrtyenrty"
-
-    print("Type anything to exit.")
-    while len(temp) == "sddfwebrq25b235b2345b23456b2345b23456nb234567n3567nj467eruyertnyenrtyenrty":
-        temp = input("> ").strip().lower()
-
-    sys.exit()
     
 def tutorial():
     print("\n" * 69 + TUTORIAL)
@@ -136,17 +154,12 @@ def tutorial():
     write("Chief: You really look like you need a buddy...", 2)
     write("Chief: Hey, RW! Come over here! Meet your new partner!", 1.5)
     write("RW: Oh, hi there! How's your day?", 1.5)
-    write("F: Hi! My day's going great, as I just got here, *chuckles*.", 1.5)
+    write("F: Hi! My day's going great, and I just got here! *chuckles*", 1.5)
     write("RW: I'm excited to be your new partner!", 1.5)
     write("F: I am too!", 1.5)
     
-    write("\nHave fun playing! (type 'done' when you're done reading)", 0)
-
-    temp = "q1g6qgewr2395qbw8476wertn12q24395485768369qwe284r5b7qn254226b5e4,m6789an2t19.85b23495ethiorubgioybqrweghiowberteqrwgybioewrtyewbrti"
-    while temp != 'done':
-        temp = choice(["done"])
-    return
-
+    choice(["done"], "Type \"done\" when you're done.")
+    
 # episode 1: Attempting the Arrest
 def ata():
     print("\n" * 69)
@@ -496,12 +509,9 @@ def ltf():
                         write("For that exact reason, JB crashes her car.")
 
                         write("F continues along the path to RW's car,", 1)
-                        write("with the map in possession.")
-
-                        write("\nRANK ACHIEVED: Aggresive Scooter Rider", 2)
+                        write("with the map in possession.", 2)
                 
-                        print("\n" * 69 + "What do you want to do? (restart episode; main menu; quit)")
-                        win() # aggresive scooter rider
+                        win("Aggressive Scooter Rider") # aggresive scooter rider
 
     
 def dtb():
@@ -511,7 +521,7 @@ def dtb():
     write("F goes into the house to get a sandwich.")
     write("F: Uhm, why are there helicopter noises outside?")
     write("He then notices the words \"thE arseS\" on the side of the helicopter.")
-    write("F: Ffffaaaaaaaa--", 2, 1/8)
+    write("F: Fuuuu--", 2, 1/8)
     
     temp = choice(["fight alone", "sandwich", "robot gang", "gadget box", "rw"], "F: Ok, what should I do? (fight alone; sandwich; robot gang; gadget box; RW)")
     
@@ -533,16 +543,34 @@ def dtb():
         temp = choice(["sandwich", "duplicate sprite", "ender pearl"], "What should F do? (ender pearl; duplicate sprite; sandwich)")
         
         if temp == "sandwich": # fail
-            write("F ate SANDWICH!")
-            write("He is satisfied!")
-            write("+15 Satisfication!")
-            write("+10 HP!")
-            write("+15 Saturation!")
+            write("F ate SANDWICH!", 1.5, 0)
+            write("He is satisfied!", 1.5, 0)
+            write("+15 Satisfication!", 1.5, 0)
+            write("+10 HP!", 1.5, 0)
+            write("+15 Saturation!", 1.5, 0)
+            write("+200 EXP!", 1.5, 0)
+            write("You are now level 38!", 1.5, 0)
             
             fail("STOP ALREADY!!!")
         
         elif temp == "duplicate sprite": # fail
-            pass
+            print(f'{Fore.GREEN}[{datetime.now().strftime("%H:%M:%S")}] {Fore.CYAN}[main/INFO]{Style.RESET_ALL}: Duplicated \'Failure\' sprite at {hex(random.randint(286331153, 4294967295))}')
+            time.sleep(5/8)
+            for _ in range(7):
+                print(f'{Fore.GREEN}[{datetime.now().strftime("%H:%M:%S")}] {Fore.CYAN}[main/INFO]{Style.RESET_ALL}: Duplicated \'Failure\' sprite at {hex(random.randint(286331153, 4294967295))}')
+                time.sleep(1/13)
+            for _ in range(69):
+                print(f'{Fore.GREEN}[{datetime.now().strftime("%H:%M:%S")}] {Fore.CYAN}[main/INFO]{Style.RESET_ALL}: Duplicated \'Failure\' sprite at {hex(random.randint(286331153, 4294967295))}')
+                time.sleep(1/31)
+                
+            print(f'{Fore.GREEN}[{datetime.now().strftime("%H:%M:%S")}] {Fore.YELLOW}[main/WARN]{Style.RESET_ALL}: \'Failure\' clones are trying to run through the bullets, this may cause issues!')
+            time.sleep(1.5)
+            print(f'{Fore.GREEN}[{datetime.now().strftime("%H:%M:%S")}] {Fore.RED}[main/FATAL]{Style.RESET_ALL}: All instances of \'Failure\' have been hit by bullets, causing all instances to die!')
+            time.sleep(3)
+
+            fail("Minecraft log, anyone?")
+
+            
         
         elif temp == "ender pearl":
             pass
@@ -572,7 +600,7 @@ def startMenu():
     temp = "WOLOLOLO"
     while temp.lower() != "start":
         while temp.lower() not in [">", "<", "start", "tutorial", "quit"]:
-            print("\n" * 69 + f"What would you like to do? (Enter '>', '<', 'start', 'tutorial', or 'quit' (next & previous episode, respectively))\n\nSelected episode: [{episode}]\n")
+            print("\n" * 69 + f"What would you like to do? (Enter '{Fore.CYAN}>{Style.RESET_ALL}', '{Fore.CYAN}<{Style.RESET_ALL}', '{Fore.GREEN}start{Style.RESET_ALL}', '{Fore.YELLOW}tutorial{Style.RESET_ALL}', or '{Fore.RED}quit{Style.RESET_ALL}' (next & previous episode, respectively))\n\nSelected episode: [{episode}]\n")
             try:
                 temp = input("> ").strip()
             except EOFError:
